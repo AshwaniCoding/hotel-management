@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:latest
+    container_name: hotel-management-postgres-1
+    environment:
+      POSTGRES_DB: hotel_db
+      POSTGRES_USER: hotel_user
+      POSTGRES_PASSWORD: hotel_pass
+    ports:
+      - "5432:5432"
+  app:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/hotel_db
+      SPRING_DATASOURCE_USERNAME: hotel_user
+      SPRING_DATASOURCE_PASSWORD: hotel_pass
+    networks:
+      - default
