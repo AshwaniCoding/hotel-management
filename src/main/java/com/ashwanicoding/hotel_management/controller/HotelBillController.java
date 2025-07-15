@@ -33,7 +33,7 @@ public class HotelBillController {
         List<Bill> bills = billService.getAllBills();
         model.addAttribute("bills", bills);
         Logging.getLogger().info("Getting all bills");
-        return "bills"; // JSP page to display all bills
+        return "jsp/bills"; // JSP page to display all bills
     }
 
     /**
@@ -46,7 +46,7 @@ public class HotelBillController {
         model.addAttribute("bill", bill);
         model.addAttribute("items", itemService.getAllItems());
         Logging.getLogger().info("New bill created");
-        return "createBill"; // JSP form page
+        return "jsp/createBill"; // JSP form page
     }
 
     /**

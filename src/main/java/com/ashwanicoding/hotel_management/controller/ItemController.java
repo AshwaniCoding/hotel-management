@@ -16,13 +16,13 @@ public class ItemController {
     @GetMapping
     public String listItems(Model model) {
         model.addAttribute("items", itemService.getAllItems());
-        return "items";
+        return "jsp/items";
     }
 
     @GetMapping("/new")
     public String showCreateItemForm(Model model) {
         model.addAttribute("item", new Item());
-        return "createItem";
+        return "jsp/createItem";
     }
 
     @PostMapping("/save")
@@ -34,7 +34,7 @@ public class ItemController {
     @GetMapping("/{id}/edit")
     public String showEditItemForm(@PathVariable Long id, Model model) {
         model.addAttribute("item", itemService.getItemById(id).orElseThrow(() -> new RuntimeException("Item not found")));
-        return "editItem";
+        return "jsp/editItem";
     }
 
     @PostMapping("/{id}/update")
